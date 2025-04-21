@@ -1,7 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
 import xml.etree.ElementTree as ET
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+import time
 
+options = Options()
+options.add_argument('--headless')
+options.add_argument('--disable-gpu')
+options.add_argument('--no-sandbox')
+driver = webdriver.Chrome(options=options)
 headers = {
     "User-Agent": "Mozilla/5.0"
 }
@@ -38,21 +46,20 @@ def get_page_urls(sitemap_url):
     return urls
 
 def scrape_title_and_image(url):
-    try:
-        resp = requests.get(url, headers=headers)
-        soup = BeautifulSoup(resp.text, "html.parser")
+    driver.get(url)
+    time.sleep(3)  # let JS load
 
-        # Get title
-        h1 = soup.find("h1")
-        title = h1.text.strip() if h1 else "N/A"
+    soup = BeautifulSoup(driver.page_source, 'html.parser')
 
-        # Get image
-        cover_img = soup.find("img", class_="cover")
-        image_url = cover_img["src"] if cover_img else "N/A"
+    # Title
+    title_tag = soup.find('h1')
+    title = title_tag.text.strip() if title_tag else 'N/A'
 
-        return {"url": url, "title": title, "image": image_url}
-    except Exception as e:
-        return {"url": url, "title": "ERROR", "image": "ERROR", "error": str(e)}
+    # Image
+    img_tag = soup.find('img', class_='cover')
+    image_url = img_tag['src'] if img_tag else 'N/A'
+
+    return title, image_url
 
 all_results = []
 
@@ -64,3 +71,5 @@ for sitemap_url in sitemaps:
         result = scrape_title_and_image(url)
         all_results.append(result)
         print(f"[✓] {result['title']} → {result['image']}")
+
+driver.quit()
