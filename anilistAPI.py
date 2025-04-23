@@ -34,8 +34,3 @@ def search_media(query, media_type):
         })
 
     return results
-
-# Example
-results = search_media("attack", "MANGA")
-for entry in results:
-    print(entry)

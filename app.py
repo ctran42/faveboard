@@ -10,7 +10,7 @@ def index():
     results = []
     if request.method == 'POST':
         query = request.form.get('query')
-        mediaType = request.form.get('mediaType')
+        mediaType = request.form.get('media_type')
         results = anilistAPI.search_media(query, mediaType)
     return render_template('index.html', results=results)
 

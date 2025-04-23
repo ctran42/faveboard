@@ -8,10 +8,17 @@
 <body>
   <div class="container">
     <h1>Anime Search</h1>
-    <form method="post">
-      <input type="text" name="query" placeholder="Enter media name..." required>
-      <button type="submit">Search</button>
+
+    <form method="POST" action="/">
+        <input type="hidden" name="media_type" id="media-type-input" value="MANGA">
+        <input type="text" name="query" placeholder="Search for media..." required>
+        <button type="submit">Search</button>
     </form>
+
+    <div class="buttons">
+        <button type="button" class="media-btn active" data-type="ANIME">Anime</button>
+        <button type="button" class="media-btn" data-type="MANGA">Manga</button>
+    </div>
 
     {% if results %}
       <div class="results">
@@ -24,5 +31,6 @@
       </div>
     {% endif %}
   </div>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
