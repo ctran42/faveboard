@@ -11,4 +11,4 @@ const Editor = () => {
     )
 }
 
-export default Editor;
+export default Editor
