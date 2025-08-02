@@ -1,4 +1,4 @@
-const Menu = () => {
+const Menu = ({ handleTabChange }) => {
     return (
         <div className="w-10">
 
