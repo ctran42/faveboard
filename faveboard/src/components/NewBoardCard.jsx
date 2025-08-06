@@ -1,6 +1,15 @@
+import { useBoard } from "../context/BoardContext"
+
 const NewBoardCard = () => {
+    const { addBoard } = useBoard()
+
     const handleNewBoard = () => {
         console.log("New board created")
+        addBoard({
+            id: Date.now(),
+            title: "New Board",
+            imageLink: "/assets/testboard1.png"
+        })
     }
 
     return (
