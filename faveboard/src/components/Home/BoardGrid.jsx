@@ -1,4 +1,4 @@
-import { useBoard } from "../context/BoardContext"
+import { useBoard } from "../../context/BoardContext"
 import BoardPreview from './BoardPreview'
 import NewBoardCard from './NewBoardCard'
 

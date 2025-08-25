@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useParams, Link, useNavigate } from "react-router-dom"
 import SidebarLayout from "../components/Sidebar/SidebarLayout"
 import SidebarMenu from "../components/Sidebar/SidebarMenu"
-import BoardEditor from "../components/BoardEditor"
+import BoardEditor from "../components/Editor/BoardEditor"
 
 const Editor = () => {
     const { id } = useParams()

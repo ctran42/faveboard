@@ -1,4 +1,4 @@
-import { useBoard } from "../context/BoardContext"
+import { useBoard } from "../../context/BoardContext"
 
 const NewBoardCard = () => {
     const { addBoard } = useBoard()
