@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { useParams, Link, useNavigate } from "react-router-dom"
-import SidebarLayout from "../components/Sidebar/SidebarLayout"
-import SidebarMenu from "../components/Sidebar/SidebarMenu"
-import BoardEditor from "../components/Editor/BoardEditor"
+import SidebarLayout from "../components/sidebar/SidebarLayout"
+import SidebarMenu from "../components/sidebar/SidebarMenu"
+import BoardEditor from "../components/editor/BoardEditor"
 
 const Editor = () => {
     const { id } = useParams()

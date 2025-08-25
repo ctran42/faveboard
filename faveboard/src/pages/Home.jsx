@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import BoardGrid from "../components/Home/BoardGrid"
+import BoardGrid from "../components/home/BoardGrid"
 
 const Home = () => {
     const id = "test123"
