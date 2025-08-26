@@ -4,17 +4,16 @@ import { useModal } from "../../context/ModalContext"
 import testboard2 from "../../assets/testboard2.png"
 
 const NewBoardModal = () => {
-    const { addBoard } = useBoard()
+    const { addBoard, boards } = useBoard()
     const { closeModal } = useModal()
     const [title, setTitle] = useState("")
     const [chartType, setChartType] = useState("Collage")
 
     const handleConfirm = () => {
-        // TODO: Replace this with actual board creation logic
         console.log("New board:", { title, chartType })
         addBoard({
             id: Date.now(),
-            title: title,
+            title: title !== "" ? title : `My Board #${boards.length+1}`,
             imageLink: testboard2
         })
         closeModal()
@@ -33,7 +32,7 @@ const NewBoardModal = () => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 className="w-full rounded-md bg-gray-700 px-3 py-2 focus:outline-none focus:ring focus:ring-blue-500"
-                placeholder="My Board #5"
+                placeholder={`My Board #${boards.length+1}`}
             />
             </div>
 
