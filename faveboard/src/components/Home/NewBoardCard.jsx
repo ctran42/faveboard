@@ -1,18 +1,11 @@
-import { useBoard } from "../../context/BoardContext"
 import { useModal } from "../../context/ModalContext"
 
 const NewBoardCard = () => {
-    const { addBoard } = useBoard()
     const { openModal } = useModal()
 
     const handleNewBoard = () => {
         console.log("New board created")
         openModal("createBoard")
-        addBoard({
-            id: Date.now(),
-            title: "New Board",
-            imageLink: "/assets/testboard1.png"
-        })
     }
 
     return (
