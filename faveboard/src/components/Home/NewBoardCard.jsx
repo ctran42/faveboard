@@ -1,7 +1,4 @@
-import { useModal } from "../../context/ModalContext"
-
-const NewBoardCard = () => {
-    const { openModal } = useModal()
+const NewBoardCard = ({ openModal }) => {
 
     const handleNewBoard = () => {
         console.log("New board created")
