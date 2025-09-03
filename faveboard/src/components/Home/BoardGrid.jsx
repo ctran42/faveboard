@@ -7,13 +7,13 @@ const BoardGrid = () => {
     const { addBoard, boards } = useBoard()
     const { openModal } = useModal()
 
-    function onEdit() {
+    const onEdit = () => {
         console.log("Edit request")
     }
 
-    function onDelete() {
-        console.log("Delete request")
-        openModal("deleteBoard")
+    const onDelete = (board) => {
+        console.log(`Delete request for ${board.id}`);
+        openModal("deleteBoard", board)
     }
 
     return (
@@ -24,7 +24,7 @@ const BoardGrid = () => {
                     title={board.title} 
                     image={board.imageLink}
                     onEdit={onEdit}
-                    onDelete={onDelete}
+                    onDelete={() => onDelete(board)}
                 />
             ))}
             <NewBoardCard 

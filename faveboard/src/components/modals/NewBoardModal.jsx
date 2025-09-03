@@ -12,7 +12,7 @@ const NewBoardModal = () => {
     const handleConfirm = () => {
         console.log("New board:", { title, chartType })
         addBoard({
-            id: Date.now(),
+            id: crypto.randomUUID(),
             title: title !== "" ? title : `My Board #${boards.length+1}`,
             imageLink: testboard2
         })
